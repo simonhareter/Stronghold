@@ -1,3 +1,4 @@
+#include "game.h"
 #include "raylib.h"
 
 //------------------------------------------------------------------------------------
@@ -8,11 +9,11 @@ int main(void) {
   const int screenHeight = 1080;
 
   InitWindow(screenWidth, screenHeight, "Stronghold");
-
   SetTargetFPS(60);
 
-  while (!WindowShouldClose()) // Detect window close button or ESC key
-  {
+  init_game();
+
+  while (!WindowShouldClose()) {
     // Update
 
     //----------------------------------------------------------------------------------
