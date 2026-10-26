@@ -18,11 +18,12 @@ typedef struct {
   bool walkable;
 } Tile;
 
-#define MAP_WIDTH 128
-#define MAP_HEIGHT 128
+#define WORLD_WIDTH 128
+#define WORLD_HEIGHT 128
+#define TILE_SIZE 32
 
 typedef struct {
-  Tile tiles[MAP_HEIGHT][MAP_WIDTH];
+  Tile tiles[WORLD_HEIGHT][WORLD_WIDTH];
 } World;
 
 

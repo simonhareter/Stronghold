@@ -1,5 +1,6 @@
 #include "game.h"
 #include "raylib.h"
+#include "renderer.h"
 
 //------------------------------------------------------------------------------------
 // Stronghold main entry point
@@ -12,6 +13,7 @@ int main(void) {
   SetTargetFPS(60);
 
   init_game();
+  Texture2D grass = LoadTexture("../assets/tiles/grass.png");
 
   while (!WindowShouldClose()) {
     // Update
@@ -23,16 +25,14 @@ int main(void) {
     //----------------------------------------------------------------------------------
     BeginDrawing();
 
-    ClearBackground(BLACK);
-
-    DrawText("Congrats! You created your first window!", 190, 200, 20,
-             LIGHTGRAY);
+    drawTile(&grass);
 
     EndDrawing();
     //----------------------------------------------------------------------------------
   }
 
   // De-Initialization
+
   CloseWindow(); // Close window and OpenGL context
   //--------------------------------------------------------------------------------------
 

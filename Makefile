@@ -7,7 +7,7 @@ default: $(TARGET)
 
 $(TARGET): main.c
 	mkdir -p build
-	$(CC) $(CFLAGS) main.c src/game.c src/world.c -o $(TARGET) $(LIBS)
+	$(CC) $(CFLAGS) main.c src/game.c src/world.c src/renderer.c -o $(TARGET) $(LIBS)
 
 clean:
 	rm -rf build
