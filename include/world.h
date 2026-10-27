@@ -3,16 +3,26 @@
 
 #include "stdbool.h"
 
-typedef enum {
+typedef enum
+{
   TERRAIN_GRASS,
   TERRAIN_WATER,
   TERRAIN_STONE,
-  TERRAIN_SAND
+  TERRAIN_SAND,
+  TERRAIN_ROAD,
+  TERRAIN_COUNT
 } TerrainType;
 
-typedef enum { OBJECT_NONE, OBJECT_TREE, OBJECT_STONE, OBJECT_IRON } ObjectType;
+typedef enum
+{
+  OBJECT_NONE,
+  OBJECT_TREE,
+  OBJECT_STONE,
+  OBJECT_IRON
+} ObjectType;
 
-typedef struct {
+typedef struct
+{
   TerrainType terrain;
   ObjectType object;
   bool walkable;
@@ -22,10 +32,10 @@ typedef struct {
 #define WORLD_HEIGHT 128
 #define TILE_SIZE 32
 
-typedef struct {
+typedef struct
+{
   Tile tiles[WORLD_HEIGHT][WORLD_WIDTH];
 } World;
-
 
 void world_init(World *world);
 
