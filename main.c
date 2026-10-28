@@ -1,4 +1,5 @@
 #include "game.h"
+#include "input.h"
 #include "raylib.h"
 #include "renderer.h"
 
@@ -19,15 +20,16 @@ int main(void)
   while (!WindowShouldClose())
   {
     // Update
+    handle_input(&game.camera);
 
     //----------------------------------------------------------------------------------
 
     // Draw
-
-    //----------------------------------------------------------------------------------
     BeginDrawing();
 
+    BeginMode2D(game.camera);
     drawGame(&game);
+    EndMode2D();
 
     EndDrawing();
     //----------------------------------------------------------------------------------
