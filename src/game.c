@@ -5,6 +5,6 @@
 
 void init_game(Game *game)
 {
-  world_init(&game->world);
+  load_world(&game->world);
   load_assets(&game->assets);
 }

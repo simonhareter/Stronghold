@@ -37,6 +37,5 @@ typedef struct
   Tile tiles[WORLD_HEIGHT][WORLD_WIDTH];
 } World;
 
-void world_init(World *world);
-
+void load_world(World *world);
 #endif
