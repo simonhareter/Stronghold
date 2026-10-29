@@ -4,14 +4,23 @@
 
 void handle_input(Camera2D *camera)
 {
-  int key = GetKeyPressed();
-  switch (key)
+  if (IsKeyDown(KEY_RIGHT))
   {
-    case KEY_LEFT:
-    case KEY_RIGHT:
-    case KEY_UP:
-    case KEY_DOWN:
-      move_camera(camera, key);
-      break;
+    move_camera(camera, KEY_RIGHT);
+  }
+
+  if (IsKeyDown(KEY_LEFT))
+  {
+    move_camera(camera, KEY_LEFT);
+  }
+
+  if (IsKeyDown(KEY_UP))
+  {
+    move_camera(camera, KEY_UP);
+  }
+
+  if (IsKeyDown(KEY_DOWN))
+  {
+    move_camera(camera, KEY_DOWN);
   }
 }

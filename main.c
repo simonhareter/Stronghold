@@ -1,17 +1,16 @@
+#include "config.h"
 #include "game.h"
 #include "input.h"
-#include "raylib.h"
 #include "renderer.h"
+#include <raylib.h>
 
 //------------------------------------------------------------------------------------
 // Stronghold main entry point
 //------------------------------------------------------------------------------------
 int main(void)
 {
-  const int screenWidth = 1920;
-  const int screenHeight = 1080;
 
-  InitWindow(screenWidth, screenHeight, "Stronghold");
+  InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Stronghold");
   SetTargetFPS(60);
 
   Game game;
@@ -26,6 +25,7 @@ int main(void)
 
     // Draw
     BeginDrawing();
+    ClearBackground(BLACK);
 
     BeginMode2D(game.camera);
     drawGame(&game);

@@ -1,73 +1,34 @@
 #include "camera.h"
 #include <raylib.h>
+#include <raymath.h>
 #include <stdio.h>
 
 void move_camera(Camera2D *camera, KeyboardKey dir)
 {
-  printf("Moving %d \r\n", dir);
-  if (is_valid_movement(camera, dir))
-  {
-    switch (dir)
-    {
-      case KEY_LEFT:
-        camera->target.x -= SPEED * GetFrameTime();
-        break;
-      case KEY_RIGHT:
-        camera->target.x += SPEED * GetFrameTime();
-        break;
-      case KEY_UP:
-        camera->target.y -= SPEED * GetFrameTime();
-        break;
-      case KEY_DOWN:
-        camera->target.y += SPEED * GetFrameTime();
-        break;
+  float speed = CAMERA_SPEED * GetFrameTime();
 
-      default:
-        break;
-    }
-  }
-  printf("coordinates of camera: %f : %f \r\n", camera->target.x,
-         camera->target.y);
-}
-
-bool is_valid_movement(Camera2D *camera, KeyboardKey dir)
-{
   switch (dir)
   {
     case KEY_LEFT:
-      if (camera->target.x - SPEED * GetFrameTime() < 0)
-      {
-        camera->target.x = 0;
-        return false;
-      }
+      camera->target.x -= speed;
       break;
-
     case KEY_RIGHT:
-      if (camera->target.x + SPEED * GetFrameTime() > 4096)
-      {
-        camera->target.x = 4096;
-        return false;
-      }
+      camera->target.x += speed;
       break;
-
     case KEY_UP:
-      if (camera->target.y - SPEED * GetFrameTime() < 0)
-      {
-        camera->target.y = 0;
-        return false;
-      }
+      camera->target.y -= speed;
       break;
-
     case KEY_DOWN:
-      if (camera->target.y + SPEED * GetFrameTime() > 4096)
-      {
-        camera->target.x = 4096;
-        return false;
-      }
+      camera->target.y += speed;
       break;
 
     default:
       break;
   }
-  return true;
+
+  printf("coordinates of camera: %f : %f \r\n", camera->target.x,
+         camera->target.y);
+
+  camera->target.x = Clamp(camera->target.x, 0.0f, 4096.0f);
+  camera->target.y = Clamp(camera->target.y, 0.0f, 4096.0f);
 }
