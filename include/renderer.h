@@ -6,8 +6,8 @@
 #include "world.h"
 #include <raylib.h>
 
-void drawGame(Game *game);
-void drawWorld(const World *world, const TileAssets *tile_assets);
-void drawTile(Texture2D texture, int x, int y);
+void draw_game(Game *game);
+void draw_world(const World *world, const TileAssets *tile_assets);
+void draw_tile(Texture2D texture, int x, int y);
 
 #endif

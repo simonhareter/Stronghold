@@ -2,3 +2,4 @@ BasedOnStyle: LLVM
 BreakBeforeBraces: Allman
 AllowShortFunctionsOnASingleLine: None
 IndentCaseLabels: true
+ColumnLimit: 100

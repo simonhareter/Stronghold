@@ -1,7 +1,5 @@
 #include "config.h"
 #include "game.h"
-#include "input.h"
-#include "renderer.h"
 #include <raylib.h>
 
 //------------------------------------------------------------------------------------
@@ -18,27 +16,20 @@ int main(void)
 
   while (!WindowShouldClose())
   {
-    // Update
-    handle_input(&game.camera);
+    update_game(&game);
 
-    //----------------------------------------------------------------------------------
-
-    // Draw
     BeginDrawing();
     ClearBackground(BLACK);
 
     BeginMode2D(game.camera);
-    drawGame(&game);
+    draw_current_state(&game);
     EndMode2D();
 
     EndDrawing();
-    //----------------------------------------------------------------------------------
   }
 
-  // De-Initialization
   // unloadGame();
   CloseWindow(); // Close window and OpenGL context
-  //--------------------------------------------------------------------------------------
 
   return 0;
 }
