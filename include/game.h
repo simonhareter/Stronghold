@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "assets.h"
+#include "menu.h"
 #include "world.h"
 #include <raylib.h>
 
@@ -12,8 +13,9 @@ typedef enum
   GAME_STATE_SETTINGS
 } GameState;
 
-typedef struct
+typedef struct Game
 {
+  Menu menu;
   GameState state;
   World world;
   Assets assets;

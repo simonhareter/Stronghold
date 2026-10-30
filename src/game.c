@@ -10,12 +10,12 @@
 
 void init_game(Game *game)
 {
+  init_menu(game);
   game->state = GAME_STATE_MENU;
-  game->camera =
-      (Camera2D){.target = {WORLD_WIDTH * TILE_SIZE / 2.0f, WORLD_HEIGHT * TILE_SIZE / 2.0f},
-                 .offset = {SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f},
-                 .rotation = 0.0f,
-                 .zoom = 1.0f};
+  game->camera = (Camera2D){.target = {WORLD_WIDTH * TILE_SIZE / 2.0f, WORLD_HEIGHT * TILE_SIZE / 2.0f},
+                            .offset = {SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f},
+                            .rotation = 0.0f,
+                            .zoom = 1.0f};
 
   load_world(&game->world);
   load_assets(&game->assets);
@@ -52,7 +52,7 @@ void draw_current_state(Game *game)
       break;
 
     case GAME_STATE_SETTINGS:
-      draw_settings(game);
+      // draw_settings(game);
       break;
   }
 }

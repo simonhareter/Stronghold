@@ -21,9 +21,14 @@ int main(void)
     BeginDrawing();
     ClearBackground(BLACK);
 
-    BeginMode2D(game.camera);
+    if (game.state == GAME_STATE_PLAYING)
+    {
+      BeginMode2D(game.camera);
+      draw_current_state(&game);
+      EndMode2D();
+    }
+
     draw_current_state(&game);
-    EndMode2D();
 
     EndDrawing();
   }
