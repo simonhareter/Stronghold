@@ -4,5 +4,4 @@
 #include <raylib.h>
 
 void handle_input(Camera2D *camera);
-
 #endif

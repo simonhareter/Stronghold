@@ -11,6 +11,7 @@
 void init_game(Game *game)
 {
   init_menu(game);
+  game->should_exit = false;
   game->state = GAME_STATE_MENU;
   game->camera = (Camera2D){.target = {WORLD_WIDTH * TILE_SIZE / 2.0f, WORLD_HEIGHT * TILE_SIZE / 2.0f},
                             .offset = {SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f},
@@ -48,7 +49,9 @@ void draw_current_state(Game *game)
       break;
 
     case GAME_STATE_PLAYING:
+      BeginMode2D(game->camera);
       draw_game(game);
+      EndMode3D();
       break;
 
     case GAME_STATE_SETTINGS:

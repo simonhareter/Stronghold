@@ -14,20 +14,13 @@ int main(void)
   Game game;
   init_game(&game);
 
-  while (!WindowShouldClose())
+  while (!WindowShouldClose() && !game.should_exit)
   {
     update_game(&game);
 
     BeginDrawing();
+
     ClearBackground(BLACK);
-
-    if (game.state == GAME_STATE_PLAYING)
-    {
-      BeginMode2D(game.camera);
-      draw_current_state(&game);
-      EndMode2D();
-    }
-
     draw_current_state(&game);
 
     EndDrawing();

@@ -12,7 +12,8 @@ SRC = main.c \
       src/camera.c \
       src/input.c \
 	  src/menu.c \
-	  src/settings.c
+	  src/settings.c \
+	  src/cursor.c
 
 OBJ = $(patsubst %.c,build/%.o,$(SRC))
 DEP = $(OBJ:.o=.d)

@@ -1,5 +1,6 @@
 #include "menu.h"
 #include "config.h"
+#include "cursor.h"
 #include "game.h"
 #include <raylib.h>
 #include <raymath.h>
@@ -24,8 +25,53 @@ void init_menu(Game *game)
   game->menu.option_count = 3;
 }
 
+bool is_mouse_over_button(Rectangle rec)
+{
+  Vector2 mouse_pos = {GetMouseX(), GetMouseY()};
+  return CheckCollisionPointRec(mouse_pos, rec);
+}
+
+int which_button_pressed(Game *game)
+{
+  for (int i = 0; i < MENU_ITEM_COUNT; i++)
+  {
+    if (is_mouse_over_button(game->menu.options[i].rec) && IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
+    {
+      return i;
+    }
+  }
+  return -1;
+}
+
+bool update_menu_cursor(Game *game)
+{
+  for (int i = 0; i < MENU_ITEM_COUNT; i++)
+  {
+    if (is_mouse_over_button(game->menu.options[i].rec))
+    {
+      return true;
+    }
+  }
+  return false;
+}
+
 void update_menu(Game *game)
 {
+  bool hovering_button = update_menu_cursor(game);
+  update_cursor(hovering_button);
+
+  switch (which_button_pressed(game))
+  {
+    case 0:
+      game->state = GAME_STATE_PLAYING;
+      break;
+    case 1:
+      game->state = GAME_STATE_SETTINGS;
+      break;
+    case 2:
+      game->should_exit = true;
+      break;
+  }
 }
 
 void draw_menu(Game *game)
